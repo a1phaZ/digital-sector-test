@@ -53,7 +53,6 @@ export const FormInput = styled(Input)`
   flex: 1 1 100%;
   width: 100%;
   padding: 12px 20px;
-  margin: 0.5rem 0 1rem 0;
   box-sizing: border-box;
 `
 
@@ -85,4 +84,8 @@ export const CloseModalButton = styled.span`
 `
 
 export const InputLabel = styled.label`
+`
+
+export const InputError = styled.span`
+  color: #dc3545;
 `

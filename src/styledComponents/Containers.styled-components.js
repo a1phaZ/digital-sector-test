@@ -68,4 +68,5 @@ export const Form = styled.form`
 `
 
 export const FormField = styled.div`
+  margin-bottom: 1rem;
 `

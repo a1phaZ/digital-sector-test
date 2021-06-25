@@ -1,9 +1,9 @@
-import React, {useReducer} from "react";
+import React, {useReducer, useState} from "react";
 import {Form, FormField, Modal, ModalContent} from "../../styledComponents/Containers.styled-components";
 import {
   AddButton,
   CloseModalButton,
-  FormInput,
+  FormInput, InputError,
   InputLabel
 } from "../../styledComponents/Inputs.styled-components";
 
@@ -16,9 +16,10 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case 'FIELD_CHANGE': {
+      const { field, value } = action.payload;
       return {
         ...state,
-        [action.payload.field]: action.payload.value
+        [field]: value
       }
     }
     case 'CLEAR': {
@@ -35,9 +36,18 @@ const reducer = (state, action) => {
 
 const ModalPage = ({showModal, setShowModal, addLink}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [urlValid, setUrlValid] = useState(false);
 
   function onFieldChange(e) {
-    dispatch({type: 'FIELD_CHANGE', payload: {field: e.currentTarget.id, value: e.currentTarget.value}});
+    const { id, value } = e.currentTarget;
+    dispatch({type: 'FIELD_CHANGE', payload: {field: id, value: value}});
+    if (id === 'url') {
+      setUrlValid(!!validateUrl(value));
+    }
+  }
+
+  function validateUrl(url) {
+    return url.match(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)
   }
 
   function clearForm() {
@@ -63,8 +73,9 @@ const ModalPage = ({showModal, setShowModal, addLink}) => {
           <FormField>
             <InputLabel htmlFor={'url'}>Адрес</InputLabel>
             <FormInput id={'url'} placeholder={'Адрес'} value={state.url} onChange={onFieldChange} required/>
+            {(state.url && !urlValid) && <InputError>Ошибка в url адресе</InputError>}
           </FormField>
-          <AddButton>Добавить ссылку</AddButton>
+          <AddButton disabled={!state.title || !state.url || !urlValid}>Добавить ссылку</AddButton>
         </Form>
 
       </ModalContent>
