@@ -2,7 +2,7 @@ import React from 'react';
 import { List, ListItem } from "../../styledComponents/List.styled-components";
 import {generateKey} from "../../handlers/generateKey";
 
-const LinksList = ({data}) => {
+const LinksList = ({data = []}) => {
   return (
     <List>
       {

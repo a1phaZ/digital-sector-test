@@ -3,7 +3,7 @@ import {List, ListItem} from "../../styledComponents/List.styled-components";
 import {generateKey} from "../../handlers/generateKey";
 import {LinkButton} from "../../styledComponents/Inputs.styled-components";
 
-const FilterBar = ({data, onFilter}) => {
+const FilterBar = ({data = [], onFilter}) => {
   const [filtered, setFiltered] = useState(false);
 
   function onFilterClick(e) {
