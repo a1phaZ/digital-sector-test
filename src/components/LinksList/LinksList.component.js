@@ -10,7 +10,7 @@ const LinksList = ({data = []}) => {
           link =>
             <ListItem key={generateKey('link')}>
               <h2>{link.title}</h2>
-              <a href={link.url}>{link.url}</a>
+              <a href={link.url} target={'_blank'} rel={"noreferrer"}>{link.url}</a>
             </ListItem>
         )
       }
