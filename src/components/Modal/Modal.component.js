@@ -1,6 +1,11 @@
 import React, {useReducer} from "react";
 import {Form, FormField, Modal, ModalContent} from "../../styledComponents/Containers.styled-components";
-import {AddButton, CloseModalButton, Input, InputLabel} from "../../styledComponents/Inputs.styled-components";
+import {
+  AddButton,
+  CloseModalButton,
+  FormInput,
+  InputLabel
+} from "../../styledComponents/Inputs.styled-components";
 
 const initialState = {
   title: '',
@@ -50,16 +55,16 @@ const ModalPage = ({showModal, setShowModal, addLink}) => {
     <Modal showModal={showModal} id={'add-modal'}>
       <ModalContent className={'add-modal-content'}>
         <CloseModalButton onClick={() => setShowModal(false)}>X</CloseModalButton>
-        <Form>
+        <Form onSubmit={onSubmit}>
           <FormField>
             <InputLabel htmlFor={'title'}>Название</InputLabel>
-            <Input id={'title'} placeholder={'Название'} value={state.title} onChange={onFieldChange} required/>
+            <FormInput id={'title'} placeholder={'Название'} value={state.title} onChange={onFieldChange} required/>
           </FormField>
           <FormField>
             <InputLabel htmlFor={'url'}>Адрес</InputLabel>
-            <Input id={'url'} placeholder={'Адрес'} value={state.url} onChange={onFieldChange} required/>
+            <FormInput id={'url'} placeholder={'Адрес'} value={state.url} onChange={onFieldChange} required/>
           </FormField>
-          <AddButton type={'button'} onClick={onSubmit}>Добавить ссылку</AddButton>
+          <AddButton>Добавить ссылку</AddButton>
         </Form>
 
       </ModalContent>
