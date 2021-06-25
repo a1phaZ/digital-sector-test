@@ -62,6 +62,10 @@ const ModalPage = ({showModal, setShowModal, addLink, data}) => {
     setShowModal(false);
   }
 
+  function canSubmit() {
+    return !state.title || !state.url || !urlValid
+  }
+
   return (
     <Modal showModal={showModal} id={'add-modal'}>
       <ModalContent className={'add-modal-content'}>
@@ -82,7 +86,7 @@ const ModalPage = ({showModal, setShowModal, addLink, data}) => {
               {data.map(category => <option key={generateKey('option')}>{category}</option>)}
             </FormSelect>
           </FormField>
-          <AddButton disabled={!state.title || !state.url || !urlValid}>Добавить ссылку</AddButton>
+          <AddButton disabled={canSubmit()}>Добавить ссылку</AddButton>
         </Form>
 
       </ModalContent>

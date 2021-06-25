@@ -81,7 +81,7 @@ export const OpenModalButton = styled(Button)`
 `
 
 export const AddButton = styled(Button)`
-  background-color: #28a745;
+  background-color: ${props => props.disabled ? '#6c757d' : '#28a745' };
   color: #fff;
 `
 
