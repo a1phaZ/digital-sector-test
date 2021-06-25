@@ -1,12 +1,9 @@
 import React from 'react';
-import {Input} from "../../styledComponents/Inputs.styled-components";
-import {HeaderContainer} from "../../styledComponents/Containers.styled-components";
+import {SearchInput} from "../../styledComponents/Inputs.styled-components";
 
 const SearchForm = ({onSearch}) => {
   return (
-    <HeaderContainer>
-      <Input placeholder={'Поиск'} onChange={onSearch}/>
-    </HeaderContainer>
+    <SearchInput placeholder={'Поиск'} onChange={onSearch}/>
   )
 }
 
