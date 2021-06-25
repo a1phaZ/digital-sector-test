@@ -21,13 +21,13 @@ const FilterBar = ({data = [], onFilter}) => {
       {
         data.map(
           ({category}) =>
-            <ListItem
+            (category && <ListItem
               key={generateKey('filter-bar')}
             >
               <LinkButton onClick={onFilterClick} data-filter={category}>
                 <h2>{category}</h2>
               </LinkButton>
-            </ListItem>
+            </ListItem>)
         )
       }
       {filtered && <ListItem>
