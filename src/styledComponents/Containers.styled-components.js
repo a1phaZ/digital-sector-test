@@ -2,16 +2,25 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  font-size: 20px;
-  justify-content: ${props => props.justifyContent};
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0;
+  @media(min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
 `
 
-export const HeaderContainer = styled.div`
-  flex: 1;
+export const HeaderContainer = styled.header`
   display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
   padding: 1rem;
+  @media(min-width: 768px) {
+    flex-wrap: nowrap;
+    width: 100%;
+  }
 `
 
 export const Content = styled.section`
@@ -22,8 +31,10 @@ export const Content = styled.section`
 `
 
 export const Sidebar = styled.aside`
-  flex: 0 1 300px;
-  border-right: 1px solid black;
+  @media(min-width: 768px) {
+    flex: 0 1 300px;
+    border-right: 1px solid #cacaca;
+  }
 `
 
 export const Modal = styled.div`
@@ -48,6 +59,9 @@ export const ModalContent = styled.div`
   padding: 20px;
   border: 1px solid #888;
   width: 80%; 
+  @media(min-width: 768px) {
+    width: 50%;
+  }
 `
 
 export const Form = styled.form`
