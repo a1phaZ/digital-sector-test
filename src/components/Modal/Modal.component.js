@@ -3,9 +3,10 @@ import {Form, FormField, Modal, ModalContent} from "../../styledComponents/Conta
 import {
   AddButton,
   CloseModalButton,
-  FormInput, InputError,
+  FormInput, FormSelect, InputError,
   InputLabel
 } from "../../styledComponents/Inputs.styled-components";
+import {generateKey} from "../../handlers/generateKey";
 
 const initialState = {
   title: '',
@@ -34,12 +35,13 @@ const reducer = (state, action) => {
   }
 }
 
-const ModalPage = ({showModal, setShowModal, addLink}) => {
+const ModalPage = ({showModal, setShowModal, addLink, data}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [urlValid, setUrlValid] = useState(false);
 
   function onFieldChange(e) {
     const { id, value } = e.currentTarget;
+    console.log(id, value);
     dispatch({type: 'FIELD_CHANGE', payload: {field: id, value: value}});
     if (id === 'url') {
       setUrlValid(!!validateUrl(value));
@@ -74,6 +76,12 @@ const ModalPage = ({showModal, setShowModal, addLink}) => {
             <InputLabel htmlFor={'url'}>Адрес</InputLabel>
             <FormInput id={'url'} placeholder={'Адрес'} value={state.url} onChange={onFieldChange} required/>
             {(state.url && !urlValid) && <InputError>Ошибка в url адресе</InputError>}
+          </FormField>
+          <FormField>
+            <InputLabel htmlFor={'title'}>Категория</InputLabel>
+            <FormSelect id={'category'} placeholder={'Название'} value={state.category} onChange={onFieldChange} required>
+              {data.map(category => <option key={generateKey('option')}>{category}</option>)}
+            </FormSelect>
           </FormField>
           <AddButton disabled={!state.title || !state.url || !urlValid}>Добавить ссылку</AddButton>
         </Form>

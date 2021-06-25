@@ -56,6 +56,22 @@ export const FormInput = styled(Input)`
   box-sizing: border-box;
 `
 
+export const FormSelect = styled.select`
+  font-size: 20px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 13px;
+  outline: 0;
+  border: 1px solid #cacaca;
+  cursor: text;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+    flex: 1 1 100%;
+  width: 100%;
+  padding: 12px 20px;
+  box-sizing: border-box;
+`
+
 export const OpenModalButton = styled(Button)`
   background-color:#17a2b8;
   color: #fff;

@@ -7,6 +7,7 @@ import SearchForm from "./components/SearchForm/SearchForm.component";
 import filterData from "./handlers/filterData";
 import {OpenModalButton} from "./styledComponents/Inputs.styled-components";
 import ModalPage from "./components/Modal/Modal.component";
+import {uniqueCategory} from "./handlers/uniqueCategory";
 
 const mock = [{
   title: 'styled-component',
@@ -77,13 +78,13 @@ function App() {
 
   return (
     <Container className="App">
-      <ModalPage showModal={showModal} setShowModal={setShowModal} addLink={addLink}/>
+      <ModalPage showModal={showModal} setShowModal={setShowModal} addLink={addLink} data={uniqueCategory(links)}/>
       <HeaderContainer className={'header'}>
         <SearchForm onSearch={onSearch}/>
         <OpenModalButton onClick={onModalToggle()}>Добавить ссылку</OpenModalButton>
       </HeaderContainer>
       <Sidebar className={'filter-bar'}>
-        <FilterBar data={links} onFilter={onFilterClick} activeFilter={filter}/>
+        <FilterBar data={uniqueCategory(links)} onFilter={onFilterClick} activeFilter={filter}/>
       </Sidebar>
       <Content className={'content'}>
         <Container>
