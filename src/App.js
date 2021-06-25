@@ -83,7 +83,7 @@ function App() {
         <OpenModalButton onClick={onModalToggle()}>Добавить ссылку</OpenModalButton>
       </HeaderContainer>
       <Sidebar className={'filter-bar'}>
-        <FilterBar data={links} onFilter={onFilterClick}/>
+        <FilterBar data={links} onFilter={onFilterClick} activeFilter={filter}/>
       </Sidebar>
       <Content className={'content'}>
         <Container>

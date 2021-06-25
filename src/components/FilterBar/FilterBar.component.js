@@ -3,7 +3,7 @@ import {List, ListItem} from "../../styledComponents/List.styled-components";
 import {generateKey} from "../../handlers/generateKey";
 import {LinkButton} from "../../styledComponents/Inputs.styled-components";
 
-const FilterBar = ({data = [], onFilter}) => {
+const FilterBar = ({data = [], onFilter, activeFilter}) => {
   const [filtered, setFiltered] = useState(false);
 
   function onFilterClick(e) {
@@ -30,7 +30,7 @@ const FilterBar = ({data = [], onFilter}) => {
             (category && <ListItem
               key={generateKey('filter-bar')}
             >
-              <LinkButton onClick={onFilterClick} data-filter={category}>
+              <LinkButton onClick={onFilterClick} data-filter={category} active={activeFilter === category}>
                 <h2>{category}</h2>
               </LinkButton>
             </ListItem>)

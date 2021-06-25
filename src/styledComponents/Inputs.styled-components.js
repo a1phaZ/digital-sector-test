@@ -31,8 +31,11 @@ export const LinkButton = styled.button`
   padding: 0!important;
   font-family: arial, sans-serif;
   color: #069;
-  text-decoration: underline;
-  cursor: pointer;
+  text-decoration: ${props => props.active ? 'underline' : 'none'};
+  cursor: pointer;  
+  h2 {
+    font-weight: ${props => props.active ? 800 : 200}!important;
+  }
 `
 
 export const SearchInput = styled(Input)`
