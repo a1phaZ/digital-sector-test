@@ -41,7 +41,6 @@ const ModalPage = ({showModal, setShowModal, addLink, data}) => {
 
   function onFieldChange(e) {
     const { id, value } = e.currentTarget;
-    console.log(id, value);
     dispatch({type: 'FIELD_CHANGE', payload: {field: id, value: value}});
     if (id === 'url') {
       setUrlValid(!!validateUrl(value));
