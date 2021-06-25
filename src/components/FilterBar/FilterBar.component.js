@@ -16,16 +16,10 @@ const FilterBar = ({data = [], onFilter, activeFilter}) => {
     onFilter('')
   }
 
-  function uniqueCategory(data) {
-    const categories = data.map(({category}) => category);
-    const unique = new Set(categories);
-    return [...unique];
-  }
-
   return (
     <List className={'filter-bar'}>
       {
-        uniqueCategory(data).map(
+        data.map(
           (category) =>
             (category && <ListItem
               key={generateKey('filter-bar')}
